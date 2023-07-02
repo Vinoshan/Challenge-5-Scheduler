@@ -12,7 +12,13 @@
 
 ## About
 
+Simple calendar application that allows users to save events for each hour of a typical working day. The application runs in the browser and features dynamically updated HTML and CSS powered by jQuery
+
 ## Features
+
+- Create, update, and delete tasks
+- In Real Time: Highlights past, present and future
+- Adjustable times
 
 ## Installation
 
@@ -20,8 +26,8 @@ N/A
 
 ## Usage
 
-![Screenshot of Home Page](./assets/imgs/screenshot.jpeg?raw=true "Screenshot of Home Page")
-[Link to Application]()
+![Screenshot of Home Page](./assets/imgs/screenshot.jpeg?raw=true "Screenshot of Website")
+[Link to Application](https://vinoshan.github.io/Challenge-5-Scheduler/)
 
 ## Contributing
 
