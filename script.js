@@ -1,23 +1,58 @@
-// Wrap all code that interacts with the DOM in a call to jQuery to ensure that
-// the code isn't run until the browser has finished rendering all the elements
-// in the html.
 $(function () {
-  // TODO: Add a listener for click events on the save button. This code should
-  // use the id in the containing time-block as a key to save the user input in
-  // local storage. HINT: What does `this` reference in the click listener
-  // function? How can DOM traversal be used to get the "hour-x" id of the
-  // time-block containing the button that was clicked? How might the id be
-  // useful when saving the description in local storage?
-  //
-  // TODO: Add code to apply the past, present, or future class to each time
-  // block by comparing the id to the current hour. HINTS: How can the id
-  // attribute of each time-block be used to conditionally add or remove the
-  // past, present, and future classes? How can Day.js be used to get the
-  // current hour in 24-hour time?
-  //
-  // TODO: Add code to get any user input that was saved in localStorage and set
-  // the values of the corresponding textarea elements. HINT: How can the id
-  // attribute of each time-block be used to do this?
-  //
-  // TODO: Add code to display the current date in the header of the page.
+  // Variables
+  var start = 6; // Start time (6 AM) Pick between 0 - 11
+  var end = 23; // End time (11 PM) Pick between 12 - 23
+
+  // Display the current day in the header
+  var currentDay = dayjs().format("dddd, MMMM D");
+  $("#currentDay").text(currentDay);
+
+  // Get the current hour in 24-hour format
+  var currentHour = dayjs().hour();
+
+  // Loop through each time block
+  for (var hour = start; hour <= end; hour++) {
+    var timeBlock = $('<div class="row time-block">');
+    var hourCol = $('<div class="col-2 col-md-1 hour text-center py-3">').text(
+      dayjs().hour(hour).format("ha"),
+    );
+    var descriptionCol = $(
+      '<textarea class="col-8 col-md-10 description" rows="3">',
+    );
+    var saveBtn = $(
+      '<button class="btn saveBtn col-2 col-md-1" aria-label="save">',
+    ).append('<i class="fas fa-save" aria-hidden="true"></i>');
+
+    timeBlock.attr("id", "hour-" + hour);
+    timeBlock.append(hourCol, descriptionCol, saveBtn);
+    $(".container-lg").append(timeBlock);
+
+    updateBlockStatus(timeBlock, hour, currentHour);
+
+    // Load any saved events from local storage
+    var savedEvent = localStorage.getItem("event-" + hour);
+    if (savedEvent !== null) {
+      descriptionCol.val(savedEvent);
+    }
+  }
+
+  // Save button click event
+  $(".saveBtn").on("click", function () {
+    var blockHour = parseInt($(this).parent().attr("id").split("-")[1]);
+    var eventText = $(this).siblings(".description").val();
+
+    // Save the event in local storage
+    localStorage.setItem("event-" + blockHour, eventText);
+  });
+
+  // Function to update the status of a time block (past, present, or future)
+  function updateBlockStatus(timeBlock, hour, currentHour) {
+    if (hour < currentHour) {
+      timeBlock.addClass("past").removeClass("present future");
+    } else if (hour === currentHour) {
+      timeBlock.addClass("present").removeClass("past future");
+    } else {
+      timeBlock.addClass("future").removeClass("past present");
+    }
+  }
 });
