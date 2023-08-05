@@ -1,4 +1,4 @@
-# Challenge-5-Scheduler
+# Scheduler
 
 A browser-based work day scheduler for effective schedule management. Features color-coded time blocks, event saving, and persistence on page refresh.
 
