@@ -29,7 +29,7 @@ N/A
 ## Usage
 
 ![Screenshot of Home Page](./assets/imgs/screenshot.jpeg?raw=true "Screenshot of Website")
-[Link to Application](https://vinoshan.github.io/Challenge-5-Scheduler/)
+[Link to Application](https://vinoshan.github.io/Scheduler/)
 
 ## Contributing
 
