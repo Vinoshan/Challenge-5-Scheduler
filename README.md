@@ -40,10 +40,8 @@ Contributions to the project are welcome! If you have any suggestions or improve
 The project is licensed under the MIT License.
 
 ## Contact
-
 If you have any questions, feedback, or inquiries, feel free to contact the developer:
 
-Email: placeholder
-Website: placeholder
-LinkedIn: placeholder
-Twitter: placeholder
+- Email: vinoshan@outlook.com 
+- GitHub: github.com/vinoshan 
+- LinkedIn: https://www.linkedin.com/in/vinoshank/
